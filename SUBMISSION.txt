@@ -1,0 +1,18 @@
+PROJECT TITLE
+GPU Batch Image Box Filter with CUDA Streams
+
+CODE REPOSITORY
+https://github.com/<YOUR_USERNAME>/gpu-capstone
+(push this folder as a public repo)
+
+CODE PROJECT DESCRIPTION
+This capstone runs a batch box filter on grayscale images using CUDA streams and events. Host code lists every PGM in an input folder, assigns each image to a stream, copies it to the GPU, runs a separable two-pass box kernel, and writes filtered_*.pgm plus timings.csv.
+
+I used a custom CUDA kernel (row then column) so the work is clearly GPU-side, not just a library wrapper. CLI flags set input dir, output dir, odd kernel size, and stream count. Makefile and run.sh build and execute it.
+
+Challenges: clamping borders without extra memory, overlapping copies with compute across a batch, and keeping the CLI simple enough to re-run on large folders. Streams and events made per-image timing clean. Lesson: generate many modest images rather than one huge file so reviewers can see a true batch run.
+
+Results: six synthetic scenes are filtered in one invocation. artifacts/ has before/after PNG previews. Next step: pinned host memory, NPP box filter comparison, and splitting the file list across two GPUs.
+
+PRESENTATION
+Record 5-10 minutes: show README, walk through box_filter.cu kernels + streams, run the CLI, show before/after images and timings.csv, mention next steps. Upload unlisted YouTube or Drive and paste the URL.

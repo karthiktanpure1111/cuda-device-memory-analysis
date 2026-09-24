@@ -1,0 +1,6 @@
+Linux + CUDA Toolkit:
+
+1. Install CUDA from NVIDIA so `nvcc --version` works.
+2. From the repo root: `make`
+3. Optional sample data: `python3 tools/generate_inputs.py`
+4. Run: `./run.sh` or `./bin/box_filter --input data/input --output data/output --kernel 5 --streams 4`
